@@ -11,6 +11,11 @@ Examples:
 - Picture id is 13910, then the thumb would be in a subfolder *10\3900*
 - Picture id is 20999, then the thumb would be in a subfolder *20\9900*
 
+## Comparison to nopCommerce's default PictureService
+
+Here is a comparision of generating thumb images for 50k pictures a) default nopCommerce PictureService and b) the BucketPictureService in this plugin. ~47 minutes vs ~22 minutes.
+
+![image](Comparison.png)
 
 # Building
 ## Directory structure
