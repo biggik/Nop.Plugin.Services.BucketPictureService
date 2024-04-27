@@ -16,14 +16,18 @@ namespace Nop.Plugin.Misc.BucketPictureService.Services
 {
     public partial class BucketPictureService : PictureService
     {
+#if !NOP_47
         private readonly INopFileProvider _fileProvider;
-
+#endif
         public BucketPictureService(
             IDownloadService downloadService,
             IHttpContextAccessor httpContextAccessor,
             ILogger logger,
             INopFileProvider fileProvider,
             IProductAttributeParser productAttributeParser,
+#if NOP_47
+            IProductAttributeService productAttributeService,
+#endif
             IRepository<Picture> pictureRepository,
             IRepository<PictureBinary> pictureBinaryRepository,
             IRepository<ProductPicture> productPictureRepository,
@@ -36,6 +40,9 @@ namespace Nop.Plugin.Misc.BucketPictureService.Services
                    logger,
                    fileProvider,
                    productAttributeParser,
+#if NOP_47
+                   productAttributeService,
+#endif
                    pictureRepository,
                    pictureBinaryRepository,
                    productPictureRepository,
@@ -44,7 +51,9 @@ namespace Nop.Plugin.Misc.BucketPictureService.Services
                    webHelper,
                    mediaSettings)
         {
+#if !NOP_47
             _fileProvider = fileProvider;
+#endif
         }
 
         /// <inheritdoc />
