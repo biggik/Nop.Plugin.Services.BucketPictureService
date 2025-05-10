@@ -1,0 +1,11 @@
+{
+  "Group": "Misc",
+  "FriendlyName": "BucketPictureService",
+  "SystemName": "Misc.BucketPictureService",
+  "Version": "1.0.2",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "Status ehf",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Misc.BucketPictureService.dll",
+  "Description": "This plugin replaces the default picture service with one that generates thumbs in buckets instead of all in one folder"
+}

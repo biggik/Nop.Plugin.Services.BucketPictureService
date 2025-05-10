@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Remove="logo.jpg" />
+    <None Remove="plugin.json" />
+  </ItemGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\_build\release</OutputPath>
+    <OutDir>$(OutputPath)</OutDir>
+    <DefineConstants>TRACE;NOP_ASYNC;NOP_48</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\_build\debug</OutputPath>
+    <OutDir>$(OutputPath)</OutDir>
+    <DefineConstants>NOP_ASYNC;NOP_48</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <Compile Include="..\..\Common\BucketPictureServicePlugin.cs" Link="BucketPictureServicePlugin.cs" />
+    <Compile Include="..\..\Common\Services\BucketPictureService.cs" Link="Services\BucketPictureService.cs" />
+    <Compile Include="..\..\Common\Services\NopStartup.cs" Link="Services\NopStartup.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="n:\nopCommerce 4.80\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj" />
+    <ProjectReference Include="n:\nopCommerce 4.80\Presentation\Nop.Web\Nop.Web.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\logo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="plugin.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+  
+  <!-- This target execute after "Build" target -->
+  <Target Name="NopTarget" AfterTargets="Build">
+    <!-- Delete unnecessary libraries from plugins path -->
+    <MSBuild Projects="n:\nopCommerce 4.80\Build\ClearPluginAssemblies.proj" Properties="PluginPath=$(MSBuildProjectDirectory)\$(OutDir)" Targets="NopClear" />
+  </Target>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="call $(ProjectDir)..\BuildHelper\BuildHelper.bat $(ConfigurationName)" />
+  </Target>
+  
+</Project>
