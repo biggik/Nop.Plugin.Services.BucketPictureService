@@ -15,6 +15,12 @@ public class NopStartup : INopStartup
     }
 
     public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
+    {
+#if NOP_49
+        services.AddScoped<IThumbService, BucketThumbPictureService>();
+#else
         // Override the default picture service
-        => services.AddScoped<IPictureService, BucketPictureService>();
+        services.AddScoped<IPictureService, BucketPictureService>();
+#endif
+    }
 }

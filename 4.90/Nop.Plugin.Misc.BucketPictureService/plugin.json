@@ -3,7 +3,7 @@
   "FriendlyName": "BucketPictureService",
   "SystemName": "Misc.BucketPictureService",
   "Version": "1.0.3",
-  "SupportedVersions": [ "4.80" ],
+  "SupportedVersions": [ "4.90" ],
   "Author": "Status ehf",
   "DisplayOrder": 1,
   "FileName": "Nop.Plugin.Misc.BucketPictureService.dll",

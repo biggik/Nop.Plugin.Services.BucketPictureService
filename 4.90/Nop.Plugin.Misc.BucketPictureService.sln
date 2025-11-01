@@ -1,21 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36518.9 d17.14
+VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nop.Plugin.Misc.BucketPictureService", "Nop.Plugin.Misc.BucketPictureService\Nop.Plugin.Misc.BucketPictureService.csproj", "{03F57895-24EF-466E-85CB-D2D716DD71BE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nopCommerce", "nopCommerce", "{5C73F01E-0888-4CFD-840E-65757E623050}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nop.Core", "n:\nopCommerce 4.70\Libraries\Nop.Core\Nop.Core.csproj", "{B6CE41AC-05F5-4D91-9199-5B39D6F35DA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nop.Core", "n:\nopCommerce 4.90\Libraries\Nop.Core\Nop.Core.csproj", "{B6CE41AC-05F5-4D91-9199-5B39D6F35DA5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nop.Data", "n:\nopCommerce 4.70\Libraries\Nop.Data\Nop.Data.csproj", "{EF4D222C-6C43-4A44-8F83-8E3994D83243}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nop.Data", "n:\nopCommerce 4.90\Libraries\Nop.Data\Nop.Data.csproj", "{EF4D222C-6C43-4A44-8F83-8E3994D83243}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nop.Services", "n:\nopCommerce 4.70\Libraries\Nop.Services\Nop.Services.csproj", "{18E90A9F-8749-457C-B9BC-AF2C3999BFF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nop.Services", "n:\nopCommerce 4.90\Libraries\Nop.Services\Nop.Services.csproj", "{18E90A9F-8749-457C-B9BC-AF2C3999BFF2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nop.Web.Framework", "n:\nopCommerce 4.70\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj", "{3F8E68F5-04AF-4CF3-AF5F-CAA49FE423A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nop.Web.Framework", "n:\nopCommerce 4.90\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj", "{3F8E68F5-04AF-4CF3-AF5F-CAA49FE423A1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nop.Web", "n:\nopCommerce 4.70\Presentation\Nop.Web\Nop.Web.csproj", "{AB55C4C4-C662-4008-8A5A-8974588BED35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nop.Web", "n:\nopCommerce 4.90\Presentation\Nop.Web\Nop.Web.csproj", "{AB55C4C4-C662-4008-8A5A-8974588BED35}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E874B66C-8A19-4CF6-A77A-D9BBA6022BA3}"
 	ProjectSection(SolutionItems) = preProject
@@ -60,7 +60,7 @@ Global
 		{AB55C4C4-C662-4008-8A5A-8974588BED35} = {5C73F01E-0888-4CFD-840E-65757E623050}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		LessCompiler = 03f57895-24ef-466e-85cb-d2d716dd71be
 		SolutionGuid = {EC22C118-6015-4F38-9598-325DC8B6E2C6}
+		LessCompiler = 03f57895-24ef-466e-85cb-d2d716dd71be
 	EndGlobalSection
 EndGlobal

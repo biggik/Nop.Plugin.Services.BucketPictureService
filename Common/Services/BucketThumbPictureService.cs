@@ -14,44 +14,25 @@ using System.Threading.Tasks;
 
 namespace Nop.Plugin.Misc.BucketPictureService.Services;
 
-public partial class BucketPictureService : PictureService
+public partial class BucketThumbPictureService : ThumbService
 {
-    public BucketPictureService(
-        IDownloadService downloadService,
-        IHttpContextAccessor httpContextAccessor,
-        ILogger logger,
-        INopFileProvider fileProvider,
-        IProductAttributeParser productAttributeParser,
-#if (NOP_47 || NOP_48 || NOP_49)
-        IProductAttributeService productAttributeService,
+#if (!NOP_47 && !NOP_48 && !NOP_49)
+    private readonly INopFileProvider _fileProvider;
 #endif
-        IRepository<Picture> pictureRepository,
-        IRepository<PictureBinary> pictureBinaryRepository,
-        IRepository<ProductPicture> productPictureRepository,
-        ISettingService settingService,
-        IUrlRecordService urlRecordService,
+    public BucketThumbPictureService(
+        IHttpContextAccessor httpContextAccessor,
+        INopFileProvider fileProvider,
         IWebHelper webHelper,
         MediaSettings mediaSettings)
-        : base(downloadService,
-               httpContextAccessor,
-               logger,
-               fileProvider,
-               productAttributeParser,
-#if (NOP_47 || NOP_48 || NOP_49)
-               productAttributeService,
-#endif
-               pictureRepository,
-               pictureBinaryRepository,
-               productPictureRepository,
-               settingService,
-               urlRecordService,
-               webHelper,
-               mediaSettings)
+        : base(httpContextAccessor,
+            fileProvider,
+            webHelper,
+            mediaSettings)
     {
     }
 
     /// <inheritdoc />
-    protected override async Task DeletePictureThumbsAsync(Picture picture)
+    public override async Task DeletePictureThumbsAsync(Picture picture)
     {
         // Drill down the actual folder used
         var fullThumbPath = await GetThumbLocalPathAsync(picture.Id, "what.ever");
@@ -66,7 +47,7 @@ public partial class BucketPictureService : PictureService
     }
 
     /// <inheritdoc />
-    protected override Task<string> GetThumbLocalPathAsync(string thumbFileName)
+    public override Task<string> GetThumbLocalPathAsync(string thumbFileName)
     {
         return GetThumbLocalPathAsync(IdFromName(thumbFileName), thumbFileName);
     }
@@ -89,14 +70,14 @@ public partial class BucketPictureService : PictureService
     }
 
     /// <inheritdoc />
-    protected override Task<string> GetThumbUrlAsync(string thumbFileName, string storeLocation = null)
+    public override Task<string> GetThumbUrlAsync(string thumbFileName, string storeLocation = null)
     {
-        return GetThumbUrlAsync(IdFromName(thumbFileName), thumbFileName, storeLocation);
+        return Task.FromResult(GetThumbUrl(IdFromName(thumbFileName), thumbFileName, storeLocation));
     }
 
-    private async Task<string> GetThumbUrlAsync(int pictureId, string thumbFileName, string storeLocation = null)
+    private string GetThumbUrl(int pictureId, string thumbFileName, string storeLocation = null)
     {
-        var url = await GetImagesPathUrlAsync(storeLocation) + "thumbs/";
+        var url = _fileProvider.Combine(_fileProvider.GetLocalImagesPath(_mediaSettings), NopMediaDefaults.ImageThumbsPath);
 
         var fileNameWithoutExtension = _fileProvider.GetFileNameWithoutExtension(thumbFileName);
         if (pictureId >= 0 && fileNameWithoutExtension != null)
